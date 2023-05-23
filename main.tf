@@ -25,6 +25,8 @@ resource "aws_instance" "webserver" {
   vpc_security_group_ids = [aws_security_group.demo-sg.id]
   key_name               = aws_key_pair.demo_key_pair.key_name
 
+  user_data = file("${path.module}/apache_user_data.sh")
+
   tags = {
     Name = var.instance_name
   }
