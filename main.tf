@@ -20,7 +20,7 @@ resource "aws_key_pair" "demo_key_pair" {
 }
 
 resource "aws_instance" "webserver" {
-  ami                    = "ami-04e601abe3e1a910f"
+  ami                    = var.instance_ami
   instance_type          = "t2.micro"
   vpc_security_group_ids = [aws_security_group.demo-sg.id]
   key_name               = aws_key_pair.demo_key_pair.key_name
